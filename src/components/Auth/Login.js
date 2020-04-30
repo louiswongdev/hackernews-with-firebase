@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useFormValidation from './useFormValidation';
 import validateLogin from './validateLogin';
+import firebase from '../../firebase';
 
 const INITIAL_STATE = {
   name: '',
@@ -8,8 +9,11 @@ const INITIAL_STATE = {
   password: '',
 };
 
+let reset = true;
+
 function Login(props) {
   const [login, setLogin] = useState(true);
+  const [firebaseError, setFirebaseError] = useState(null);
   const {
     handleSubmit,
     handleBlur,
@@ -17,7 +21,24 @@ function Login(props) {
     isSubmitting,
     handleChange,
     values,
-  } = useFormValidation(INITIAL_STATE, validateLogin, login);
+  } = useFormValidation(INITIAL_STATE, validateLogin, login, authenticateUser);
+
+  const handleLoginOrCreate = () => {
+    setLogin(prevLogin => !prevLogin);
+    // validateLogin(values, login, reset);
+  };
+
+  async function authenticateUser() {
+    const { name, email, password } = values;
+    try {
+      const response = login
+        ? await firebase.login(email, password)
+        : await firebase.register(name, email, password);
+    } catch (err) {
+      console.error('Authentication Error', err);
+      setFirebaseError(err.message);
+    }
+  }
 
   return (
     <div>
@@ -56,6 +77,7 @@ function Login(props) {
           placeholder="Choose a secure password"
         />
         {errors.password && <p className="error-text">{errors.password}</p>}
+        {firebaseError && <p className="error-text">{firebaseError}</p>}
         <div className="flex mt3">
           <button
             type="submit"
@@ -68,7 +90,7 @@ function Login(props) {
           <button
             type="button"
             className="pointer button"
-            onClick={() => setLogin(prevLogin => !prevLogin)}
+            onClick={handleLoginOrCreate}
           >
             {login ? 'need to create an account?' : 'already have an account?'}
           </button>

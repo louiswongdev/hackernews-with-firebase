@@ -1,7 +1,9 @@
-export default function validateLogin(values, isLogin) {
+export default function validateLogin(values, isLogin, reset) {
   let errors = {};
 
+  console.log(errors);
   // Name Errors
+  // only set error on name field if user creating an account
   if (!values.name && !isLogin) {
     errors.name = 'Name required';
   }
