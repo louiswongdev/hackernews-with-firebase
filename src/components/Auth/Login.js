@@ -26,6 +26,7 @@ function Login(props) {
         {!login && (
           <input
             onChange={handleChange}
+            onBlur={handleBlur}
             name="name"
             value={values.name}
             type="text"
@@ -33,6 +34,7 @@ function Login(props) {
             autoComplete="off"
           />
         )}
+        {errors.name && <p className="error-text">{errors.name}</p>}
         <input
           onChange={handleChange}
           onBlur={handleBlur}

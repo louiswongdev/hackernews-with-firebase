@@ -1,6 +1,11 @@
 export default function validateLogin(values) {
   let errors = {};
 
+  // Name Errors
+  if (!values.name) {
+    errors.name = 'Name required';
+  }
+
   // Email Errors
   if (!values.email) {
     errors.email = 'Email required';
