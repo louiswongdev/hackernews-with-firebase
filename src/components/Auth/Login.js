@@ -22,7 +22,7 @@ function Login(props) {
     isSubmitting,
     handleChange,
     values,
-  } = useFormValidation(INITIAL_STATE, validateLogin, login, authenticateUser);
+  } = useFormValidation(INITIAL_STATE, validateLogin, authenticateUser, login);
 
   const handleLoginOrCreate = () => {
     setLogin(prevLogin => !prevLogin);
@@ -32,7 +32,7 @@ function Login(props) {
   async function authenticateUser() {
     const { name, email, password } = values;
     try {
-      const response = login
+      login
         ? await firebase.login(email, password)
         : await firebase.register(name, email, password);
 

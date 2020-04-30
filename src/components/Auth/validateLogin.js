@@ -1,11 +1,13 @@
-export default function validateLogin(values, isLogin, reset) {
+export default function validateLogin(values, loggedIn) {
   let errors = {};
 
   console.log(errors);
   // Name Errors
   // only set error on name field if user creating an account
-  if (!values.name && !isLogin) {
-    errors.name = 'Name required';
+  if (!loggedIn) {
+    if (!values.name) {
+      errors.name = 'Name required';
+    }
   }
 
   // Email Errors

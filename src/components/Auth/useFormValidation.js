@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function useFormValidation(initialState, validate, isLogin, authenticate) {
+function useFormValidation(initialState, validate, authenticate, login) {
   const [values, setValues] = useState(initialState);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -26,13 +26,13 @@ function useFormValidation(initialState, validate, isLogin, authenticate) {
   }
 
   function handleBlur() {
-    const validationErrors = validate(values, isLogin);
+    const validationErrors = validate(values, login);
     setErrors(validationErrors);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    const validationErrors = validate(values, isLogin);
+    const validationErrors = validate(values, login);
     console.log(errors);
     setIsSubmitting(true);
     setErrors(validationErrors);
