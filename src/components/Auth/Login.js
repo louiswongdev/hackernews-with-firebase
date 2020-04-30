@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import useFormValidation from './useFormValidation';
 import validateLogin from './validateLogin';
-import firebase from '../../firebase';
+import { firebase } from '../../firebase';
 
 const INITIAL_STATE = {
   name: '',
