@@ -9,6 +9,7 @@ const INITIAL_STATE = {
 };
 
 function Login(props) {
+  const [login, setLogin] = useState(true);
   const {
     handleSubmit,
     handleBlur,
@@ -16,13 +17,12 @@ function Login(props) {
     isSubmitting,
     handleChange,
     values,
-  } = useFormValidation(INITIAL_STATE, validateLogin);
-  const [login, setLogin] = useState(true);
+  } = useFormValidation(INITIAL_STATE, validateLogin, login);
 
   return (
     <div>
       <h2 className="mv3">{login ? 'Login' : 'Create Account'}</h2>
-      <form onSubmit={handleSubmit} className="flex flex-column">
+      <form onSubmit={handleSubmit} className="flex flex-column" noValidate>
         {!login && (
           <input
             onChange={handleChange}
@@ -34,7 +34,7 @@ function Login(props) {
             autoComplete="off"
           />
         )}
-        {errors.name && <p className="error-text">{errors.name}</p>}
+        {errors.name && !login && <p className="error-text">{errors.name}</p>}
         <input
           onChange={handleChange}
           onBlur={handleBlur}

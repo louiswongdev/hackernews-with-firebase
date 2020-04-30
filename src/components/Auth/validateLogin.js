@@ -1,8 +1,8 @@
-export default function validateLogin(values) {
+export default function validateLogin(values, isLogin) {
   let errors = {};
 
   // Name Errors
-  if (!values.name) {
+  if (!values.name && !isLogin) {
     errors.name = 'Name required';
   }
 
