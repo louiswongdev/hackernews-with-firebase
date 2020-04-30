@@ -19,6 +19,7 @@
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "arrow-parens": [2, "as-needed"],
+    "comma-style": "off",
     // "quotes": [2, "double", { "avoidEscape": true }],
     "prettier/prettier": [
       1,
@@ -27,6 +28,6 @@
         "printWidth": 120,
         "tabWidth": 2
       }
-    ]
+    ],
   }
 }
