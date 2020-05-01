@@ -15,7 +15,7 @@ function Header() {
           new
         </NavLink>
         <div className="divider">|</div>
-        <NavLink to="/" className="header-link">
+        <NavLink to="/top" className="header-link">
           top
         </NavLink>
         <div className="divider">|</div>
