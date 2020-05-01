@@ -52,7 +52,9 @@ function LinkItem({ link, index, showCount, history }) {
       </div>
       <div className="ml1">
         <div>
-          {link.description}{' '}
+          <a href={link.url} className="black no-underline" target="_blank">
+            {link.description}
+          </a>{' '}
           <span className="link">({getDomain(link.url)})</span>
         </div>
         <div className="f6 lh-copy gray">
@@ -61,7 +63,7 @@ function LinkItem({ link, index, showCount, history }) {
           {' | '}
           <Link to={`/link/${link.id}`}>
             {link.comments.length > 0
-              ? `${link.comments.length} comments: `
+              ? `${link.comments.length} comments`
               : 'discuss'}
           </Link>
           {postedByAuthUser && (
