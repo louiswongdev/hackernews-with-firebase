@@ -19,7 +19,7 @@ function Header() {
           top
         </NavLink>
         <div className="divider">|</div>
-        <NavLink to="/" className="header-link">
+        <NavLink to="/search" className="header-link">
           search
         </NavLink>
         {user && (
