@@ -137,6 +137,17 @@ textarea {
   display: flex;
 }
 
+.pagination-link {
+  cursor: pointer;
+  font-size: 14px;
+  color: #777;
+  transition: all 0.3s;
+}
+
+.pagination-link:hover {
+  color: #ff6600;
+}
+
 .vote-button {
   cursor: pointer;
   font-size: 11px;
@@ -171,3 +182,4 @@ textarea {
   margin-bottom: 0.2em;
   max-width: 500px;
 }
+

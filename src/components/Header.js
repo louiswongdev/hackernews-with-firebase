@@ -25,7 +25,7 @@ function Header() {
         {user && (
           <>
             <div className="divider">|</div>
-            <NavLink to="/" className="header-link">
+            <NavLink to="/create" className="header-link">
               submit
             </NavLink>
           </>
